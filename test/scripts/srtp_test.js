@@ -333,6 +333,7 @@
         var tagLength = 10;
         var d = ctx.protect(data);
         ok(d != null, "test protect");
+        // length = (data length) + (tag length) + (RTCP e-flag and index) + MKI
         equal(d.length, data.length + tagLength + 4, "check protected data length");
     });
 
@@ -384,9 +385,8 @@
 
         var tagLength = 10;
         var d = ctx.protect(data);
-        // TODO: send EKT full type packet
-        //var ektLength = 42;
-        var ektLength = 1;
+        var ektLength = 42; // always generate full type EKT for first packet
+        //var ektLength = 1;
         ok(d != null, "test protect");
         equal(d.length, data.length + tagLength + 4 + ektLength, "check protected data length");
     });
@@ -409,9 +409,8 @@
 
         var tagLength = 10;
         var d = ctx.protect(data);
-        // TODO: send EKT full type packet
-        //var ektLength = 42;
-        var ektLength = 1;
+        var ektLength = 42; // always generate full type EKT for first packet
+        //var ektLength = 1;
         ok(d != null, "test protect");
         equal(d.length, data.length + tagLength + 4 + ektLength, "check protected data length");
 
